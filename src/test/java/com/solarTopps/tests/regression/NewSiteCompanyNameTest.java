@@ -9,12 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.solarTopps.tests.Login.Login;
 import com.solarTopps.tests.common.Account;
-import com.solarTopps.tests.common.RandomStr;
-
 
 public class NewSiteCompanyNameTest {
 	public static void main(String[] args) throws InterruptedException {
-		RandomStr ranStr = new RandomStr();
 		System.setProperty("webdriver.chrome.driver", "D:\\Soft for EC\\chromedriver-win64\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		Login obj = new Login();
@@ -33,17 +30,18 @@ public class NewSiteCompanyNameTest {
 		Thread.sleep(3000);
 		// Add New Account
 		Account account = new Account();
-		account.addNewAccount(loggedInDriver, wait);
-//
+//		account.addNewAccount(loggedInDriver, wait);
 //		Thread.sleep(1000);
 //		accounts.click();
 		Thread.sleep(1000);
+		
 		// click on any customer account to nevigate to account
-		//WebElement clickOnAccount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Vishal  Krishna']")));
-		//clickOnAccount.click();
+		WebElement clickOnAccount = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Vishal  Krishna']")));
+		clickOnAccount.click();
 
 //			Add New site
-		//account.addNewSite(loggedInDriver);
+		account.addNewSite(loggedInDriver);
 	}
 
 }
