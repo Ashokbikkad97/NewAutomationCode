@@ -6,6 +6,7 @@ import com.solarTopps.tests.interfaces.CommonUnimplementedMethods;
 
 public class RandomStr implements CommonUnimplementedMethods {
 
+	@Override
 	public String randomString(int length) {
 		String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		Random random = new Random();
@@ -16,6 +17,7 @@ public class RandomStr implements CommonUnimplementedMethods {
 		return sb.toString();
 	}
 
+	@Override
 	public String randomInteger(int length) {
 		String chars = "012345678911223344";
 		Random random = new Random();
