@@ -1,0 +1,59 @@
+	public static void main(String[] args) throws Exception {
+
+		System.setProperty("webdriver.chrome.driver", "D:\\Data\\javaWorkspace\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("https://demoqa.com/alerts");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id='confirmButton']")).click();
+		Thread.sleep(3000);
+// Call method to handle alerts
+        handleAlerts(driver);
+
+	/*******************	// Verify Alert Text
+		System.out.println(driver.switchTo().alert().getText());
+		String expectedResult = "Do you confirm action?";
+		Assert.assertEquals(driver.switchTo().alert().getText(), expectedResult);
+		System.out.println("Alert Content Verified");
+
+		// Accept the Alert
+		Thread.sleep(3000);
+		driver.switchTo().alert().accept();
+		System.out.println("Accept Worked");
+
+		// Dismiss the Alert
+		driver.navigate().refresh();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id='confirmButton']")).click();
+		Thread.sleep(3000);
+		driver.switchTo().alert().dismiss();
+		System.out.println("Dismiss Worked");
+		driver.close(); *******************/
+
+	}
+
+    public static void handleAlerts(WebDriver driver) throws InterruptedException {
+        // Click the button to trigger the alert
+        driver.findElement(By.xpath("//*[@id='confirmButton']")).click();
+        Thread.sleep(3000);
+
+        // Verify Alert Text
+        Alert alert = driver.switchTo().alert();
+        String alertText = alert.getText();
+        String expectedResult = "Do you confirm action?";
+        Assert.assertEquals(alertText, expectedResult);
+        System.out.println("Alert Content Verified");
+
+        // Accept the Alert
+        alert.accept();
+        System.out.println("Accept Worked");
+
+        // Dismiss the Alert
+        driver.navigate().refresh();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//*[@id='confirmButton']")).click();
+        Thread.sleep(3000);
+        alert.dismiss();
+        System.out.println("Dismiss Worked");
+    }
